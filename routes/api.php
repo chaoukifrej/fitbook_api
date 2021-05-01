@@ -13,10 +13,15 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
+/* Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
-});
+}); */
 
+//USER Connection et enregistrement
 Route::post('/register', 'RegisterController@register')->name('register.register');
 Route::post('/login', 'LoginController@login')->name('login.login');
 Route::post('/logout', 'LoginController@logout')->name('login.logout');
+
+Route::get('/user', 'UserController@user')->name('user.user');
+Route::get('/user/{id}', 'UserController@userConnected')->name('user.userConnected');
+Route::put('/user', 'UserController@update')->name('user.update');
